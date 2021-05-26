@@ -11,7 +11,7 @@
 
 - 前台
 
-![](https://cdn.jsdelivr.net/gh/Iooooot/photos@master/project/20210524174815.gif)
+![](https://cdn.jsdelivr.net/gh/Iooooot/photos@master/project/qiantai.gif)
 
 - 后台
 
