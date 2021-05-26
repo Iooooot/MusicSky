@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>歌单 | Music Sky</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="dist/css/list.css">
+
+  <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+  <script src="plugins/fastclick/fastclick.js"></script>
+  <!-- pagination插件 -->
+  <script type="text/javascript" src="plugins/jQuery/jquery.pagination.js"></script>
+  <script src="dist/js/app.min.js"></script>
+  <script src="dist/js/demo.js"></script>
+
+  <script src="js/user.js"></script>
+  <script src="js/list.js"></script>
+  <!-- layer弹窗js -->
+  <script src="layer/layer.js"></script>
+  <link rel="stylesheet" href="dist/css/pagination.css" />
+
+</head>
+
+<body class="hold-transition skin-red layout-top-nav">
+<div class="wrapper">
+
+  <header class="main-header">
+    <nav class="navbar navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><b>Music</b>Sky</a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <i class="fa fa-bars"></i>
+          </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="song.html">歌曲</a></li>
+            <li class="active"><a href="list.html">歌单</a></li>
+            <li><a href="player.html">播放器</a></li>
+          </ul>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input id="searchbar" type="text" class="form-control" id="searchbar" placeholder="搜索歌单名/类别描述">
+            </div>
+          </form>
+        </div>
+        <!-- /.navbar-collapse -->
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+			<li class="user user-menu">
+                <a href="#" class="" data-toggle="modal" data-target="#signin">
+                  <span id="li_span_signin">登录</span>
+                </a>
+              </li>
+              <li class="user user-menu" id="li_signup">
+                <a href="#" class="" data-toggle="modal" data-target="#signup">
+                  <span>注册</span>
+                </a>
+              </li>
+              <li class="user user-menu" id="li_signout" style="display: none">
+                <a href="#">
+                  <span>退出</span>
+                </a>
+              </li>
+          </ul>
+        </div>
+        <!-- /.navbar-custom-menu -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </header>
+  <!-- Full Width Column -->
+  <div class="content-wrapper">
+    <div class="container">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          歌单
+          <small>All The MusicList</small>
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="index.html"><i class="fa fa-dashboard"></i> 首页</a></li>
+          <li class="active">歌单</li>
+        </ol>
+      </section>
+      <!-- /.content -->
+
+      <!-- Main content -->
+    <section class="content">
+
+      <div class="row">
+        <div class="col-md-3">
+            <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">最新歌单</h3>
+            </div>
+            <div class="box-body">
+              <ul id="newSongListUl" class="new-artist-songs">
+                <li class="artist-song">
+                  <div class="avatar">
+                    <img src="./storage/avatar/0.jpg">
+                  </div>
+                  <div class="info">
+                    <h3>Refrain</h3>
+                    <p>HaPBoy / <span>2021-5-10</span></p>
+                  </div>
+                  <a href="./music/22712173.html" title="Refrain" class="cover-link"></a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">热门歌单</h3>
+            </div>
+            <div class="box-body">
+              <ul id="hotSongListUl" class="new-artist-songs">
+                <li class="artist-song">
+                  <div class="avatar">
+                    <img src="./storage/avatar/0.jpg">
+                  </div>
+                  <div class="info">
+                    <h3>Refrain</h3>
+                    <p>HaPBoy / <span>1595</span>次播放</p>
+                  </div>
+                  <a href="./music/22712173.html" title="Refrain" class="cover-link"></a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+
+          <!-- /.box -->
+        </div> 
+        <div class="col-md-9">
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">全部歌单</h3>
+            </div>
+            <div class="box-body">
+              <div class="margin-bottom">
+              		<div class="row">
+                      <ul id="musicList" class="music-list clearfix">
+                        <li>
+                          <div class="u-cover">
+                            <img src="http://p3.music.126.net/fNtMX44fvaGByURP0AbOZQ==/836728348761063.jpg">
+                            <a title="Refrain - Anan Ryoko" href="" class="msk"></a>
+                          </div>
+                          <p class="dec">
+                            <a title="Refrain - Anan Ryoko" href="">Refrain</a>
+                          </p>
+                          <div class="author">By:HaPBoy</div>
+                        </li>
+                      </ul>
+                    </div>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div> 
+         
+      </div> 
+    </section>       
+    </div>
+    <!-- /.container -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0.0
+      </div>
+      <strong>Copyright &copy; 2021.</strong> All rights reserved.
+    </div>
+    <!-- /.container -->
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- 登录模态框 -->
+<div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="signinLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="signinLabel">登录</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>用户名</label>
+          <input type="text" class="form-control" id="signin_username" placeholder="输入用户名">
+          <label>密码</label>
+          <input type="password" class="form-control" id="signin_password" placeholder="输入密码">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"  id="signin_button">登录</button>
+        <a href="admin/login.html" class="btn btn-link" style="font-size: 1px;float: left">管理员入口</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 注册模态框 -->
+<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="signupLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="signupLabel">注册</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for=>用户名</label>
+          <input type="text" class="form-control" id="signup_username" placeholder="输入用户名(必填)">
+          <label>密码</label>
+          <input type="password" class="form-control" id="signup_password" placeholder="输入密码(必填)">
+          <label>确认密码</label>
+          <input type="password" class="form-control" id="signup_password2" placeholder="再次输入密码(必填)">
+          <label>性别</label><br/>
+          <input type="radio"  name="sex" id="signup_sex" value="男">男
+          <input type="radio" name="sex" id="signup_sex2" value="女">女<br/>
+          <label>电话</label>
+          <input type="tel" class="form-control" id="signup_tel" placeholder="输入电话">
+          <label>邮箱</label>
+          <input type="email" class="form-control" id="signup_email" placeholder="输入邮箱">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button"  id="signup_button" class="btn btn-danger">注册</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

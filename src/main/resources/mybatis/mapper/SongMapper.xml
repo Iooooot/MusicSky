@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wht.musicSky.dao.SongMapper" >
+  <resultMap id="BaseResultMap" type="com.wht.musicSky.entity.Song" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="song_name" property="songName" jdbcType="VARCHAR" />
+    <result column="singer_name" property="singerName" jdbcType="VARCHAR" />
+    <result column="song_type" property="songType" jdbcType="VARCHAR" />
+    <result column="poster_resource" property="posterResource" jdbcType="VARCHAR" />
+    <result column="song_resource" property="songResource" jdbcType="VARCHAR" />
+    <result column="lyrics_resource" property="lyricsResource" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, song_name, singer_name, song_type, poster_resource, song_resource, lyrics_resource, 
+    create_time, update_time, status
+  </sql>
+  <select id="selectSongInListById" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from song
+    where id in
+    (select song_id from song_list_mapping where song_list_id = #{songListId})
+  </select>
+  <select id="selectSingers" resultType="string">
+    select distinct singer_name  from song
+  </select>
+  <select id="selectSongType" resultType="string">
+    select distinct song_type  from song
+  </select>
+  <select id="selectSongRank" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from song
+    where status in (1,2,3,4)
+  </select>
+  <select id="selectSongByKeyword" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from song
+    where id like concat("%",#{keyword},"%") or
+    song_name like concat("%",#{keyword},"%") or
+    singer_name like concat("%",#{keyword},"%") or
+    song_type like concat("%",#{keyword},"%") or
+    create_time like concat("%",#{keyword},"%")
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wht.musicSky.entity.SongExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from song
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from song
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteSong_SongList_MapBySongId">
+    delete from song_list_mapping
+    where song_id = #{id}
+  </delete>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from song
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wht.musicSky.entity.SongExample" >
+    delete from song
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insertSongToSongList">
+    insert into song_list_mapping (song_id,song_list_id) values (#{songId},#{songListId})
+  </insert>
+  <insert id="insert" parameterType="com.wht.musicSky.entity.Song" >
+    insert into song (id, song_name, singer_name, 
+      song_type, poster_resource, song_resource, 
+      lyrics_resource, create_time, update_time, 
+      status)
+    values (#{id,jdbcType=BIGINT}, #{songName,jdbcType=VARCHAR}, #{singerName,jdbcType=VARCHAR}, 
+      #{songType,jdbcType=VARCHAR}, #{posterResource,jdbcType=VARCHAR}, #{songResource,jdbcType=VARCHAR}, 
+      #{lyricsResource,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wht.musicSky.entity.Song" >
+    insert into song
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="songName != null" >
+        song_name,
+      </if>
+      <if test="singerName != null" >
+        singer_name,
+      </if>
+      <if test="songType != null" >
+        song_type,
+      </if>
+      <if test="posterResource != null" >
+        poster_resource,
+      </if>
+      <if test="songResource != null" >
+        song_resource,
+      </if>
+      <if test="lyricsResource != null" >
+        lyrics_resource,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="songName != null" >
+        #{songName,jdbcType=VARCHAR},
+      </if>
+      <if test="singerName != null" >
+        #{singerName,jdbcType=VARCHAR},
+      </if>
+      <if test="songType != null" >
+        #{songType,jdbcType=VARCHAR},
+      </if>
+      <if test="posterResource != null" >
+        #{posterResource,jdbcType=VARCHAR},
+      </if>
+      <if test="songResource != null" >
+        #{songResource,jdbcType=VARCHAR},
+      </if>
+      <if test="lyricsResource != null" >
+        #{lyricsResource,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="countByExample" parameterType="com.wht.musicSky.entity.SongExample" resultType="java.lang.Integer" >
+    select count(*) from song
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update song
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.songName != null" >
+        song_name = #{record.songName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.singerName != null" >
+        singer_name = #{record.singerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.songType != null" >
+        song_type = #{record.songType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.posterResource != null" >
+        poster_resource = #{record.posterResource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.songResource != null" >
+        song_resource = #{record.songResource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lyricsResource != null" >
+        lyrics_resource = #{record.lyricsResource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update song
+    set id = #{record.id,jdbcType=BIGINT},
+      song_name = #{record.songName,jdbcType=VARCHAR},
+      singer_name = #{record.singerName,jdbcType=VARCHAR},
+      song_type = #{record.songType,jdbcType=VARCHAR},
+      poster_resource = #{record.posterResource,jdbcType=VARCHAR},
+      song_resource = #{record.songResource,jdbcType=VARCHAR},
+      lyrics_resource = #{record.lyricsResource,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wht.musicSky.entity.Song" >
+    update song
+    <set >
+      <if test="songName != null" >
+        song_name = #{songName,jdbcType=VARCHAR},
+      </if>
+      <if test="singerName != null" >
+        singer_name = #{singerName,jdbcType=VARCHAR},
+      </if>
+      <if test="songType != null" >
+        song_type = #{songType,jdbcType=VARCHAR},
+      </if>
+      <if test="posterResource != null" >
+        poster_resource = #{posterResource,jdbcType=VARCHAR},
+      </if>
+      <if test="songResource != null" >
+        song_resource = #{songResource,jdbcType=VARCHAR},
+      </if>
+      <if test="lyricsResource != null" >
+        lyrics_resource = #{lyricsResource,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wht.musicSky.entity.Song" >
+    update song
+    set song_name = #{songName,jdbcType=VARCHAR},
+      singer_name = #{singerName,jdbcType=VARCHAR},
+      song_type = #{songType,jdbcType=VARCHAR},
+      poster_resource = #{posterResource,jdbcType=VARCHAR},
+      song_resource = #{songResource,jdbcType=VARCHAR},
+      lyrics_resource = #{lyricsResource,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

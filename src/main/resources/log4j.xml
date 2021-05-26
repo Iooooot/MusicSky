@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" >
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{dd HH:mm:ss,SSS}] [%-5p] [%t] %c{3} - %m%n"/>
+		</layout>
+	</appender>
+	<appender name="file_appender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="E://logs/attendance.log"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{dd HH:mm:ss,SSS}] [%-5p] [%t] %c{3} - %m%n"/>
+		</layout>
+	</appender>
+
+	<category name="com.airlab">
+		<level value="debug"/>
+	</category>
+	<category name="java.sql.Connection">
+		<level value="debug"/>
+	</category>
+	<category name="java.sql.Statement">
+		<level value="debug"/>
+	</category>
+	<category name="java.sql.PreparedStatement">
+		<level value="debug"/>
+	</category>
+
+	<root>
+		<level value="debug"/>
+		<appender-ref ref="file_appender"/>
+		<appender-ref ref="stdout"/>
+	</root>
+</log4j:configuration>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>首页 | Music Sky</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <!--下面这几个是比较重要的css的引入包
+      下面的这些也很重要
+    -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="dist/css/index.css">
+
+  <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+  <script src="plugins/fastclick/fastclick.js"></script>
+  <script src="dist/js/app.min.js"></script>
+  <!-- 功能js -->
+  <script src="js/user.js"></script>
+  <script src="js/index.js"></script>
+  <!-- layer弹窗js -->
+  <script src="layer/layer.js"></script>
+  <style>
+
+  </style>
+</head>
+<!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+<body class="hold-transition skin-red layout-top-nav">
+<div class="wrapper">
+
+  <header class="main-header">
+    <nav class="navbar navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><b>Music</b>Sky</a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <i class="fa fa-bars"></i>
+          </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html">首页</a></li>
+            <li><a href="song.html">歌曲</a></li>
+            <li><a href="list.html">歌单</a></li>
+            <li><a href="player.html">播放器</a></li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+              <li class="user user-menu">
+                <a href="#" id="li_a_signin" class="" data-toggle="modal" data-target="#signin">
+                  <span id="li_span_signin">登录</span>
+                </a>
+              </li>
+              <li class="user user-menu" id="li_signup">
+                <a href="#" class="" data-toggle="modal" data-target="#signup">
+                  <span>注册</span>
+                </a>
+              </li>
+              <li class="user user-menu" id="li_signout" style="display: none">
+                <a href="#">
+                  <span>退出</span>
+                </a>
+              </li>
+          </ul>
+        </div>
+        <!-- /.navbar-custom-menu -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </header>
+  <!-- Full Width Column -->
+  <div class="content-wrapper">
+    <div class="container">
+            <!-- Main content -->
+    <section class="content">
+
+      <div class="row">
+        <div class="col-md-9">
+          <div class="box-body no-padding">
+              <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="3" class=""></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="item active">
+                    <img src="dist/img/lunbo-2.jpg" alt="First slide">
+                  </div>
+                  <div class="item">
+                    <img src="dist/img/lunbo-1.jpg" alt="Second slide">
+                  </div>
+                  <div class="item">
+                    <img src="dist/img/lunbo-3.jpg" alt="Third slide">
+                  </div>
+                  <div class="item">
+                    <img src="dist/img/lunbo-4.jpg" alt="Third slide">
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                  <span class="fa fa-angle-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                  <span class="fa fa-angle-right"></span>
+                </a>
+              </div>
+            </div>
+            <!-- /.box-body -->
+
+            <div class="box">
+              <div class="box-header with-border">
+                <h3 class="box-title"> <i class="fa fa-fw fa-signal"></i>排行榜</h3>
+              </div>
+              <div class="box-body">
+                <div class="row">
+                  <div class="col-xs-6">
+                      <div class="box box-danger">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">热歌榜</h3>
+                        </div>
+                        <div class="box-body">
+                          <table id="hotMusicList" class="table table-condensed">
+                            <tr>
+                              <th>&nbsp;&nbsp;&nbsp;</th>
+                              <th>歌名</th>
+                              <th>歌手</th>
+                              <th>歌曲类型</th>
+                            </tr>
+                            <tr><td style="color: red">1</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td style="color: red">2</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td style="color: red">3</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td >4</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td >5</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td >6</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td >7</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td >8</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                          </table>
+                        </div>
+                      </div>
+                  </div>
+
+                  <div class="col-xs-6">
+                      <div class="box box-warning">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">流行榜</h3>
+                        </div>
+                        <div class="box-body">
+                          <table id="popularList" class="table table-condensed">
+                            <tr>
+                              <th>&nbsp;&nbsp;&nbsp;</th>
+                              <th>歌名</th>
+                              <th>歌手</th>
+                              <th>歌曲类型</th>
+                            </tr>
+                            <tr><td style="color: red;">1</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td style="color: red">2</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td style="color: red">3</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td >4</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td >5</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td >6</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td >7</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td >8</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                          </table>
+                        </div>
+                      </div>
+
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <div class="box box-success">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">新歌榜</h3>
+                      </div>
+                      <div class="box-body">
+                        <table id="newMusicList" class="table table-condensed">
+                          <tr>
+                            <th>&nbsp;&nbsp;&nbsp;</th>
+                            <th>歌名</th>
+                            <th>歌手</th>
+                            <th>歌曲类型</th>
+                          </tr>
+                          <tr><td style="color: red">1</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                          <tr><td style="color: red">2</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                          <tr><td style="color: red">3</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                          <tr><td >4</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                          <tr><td >5</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                          <tr><td >6</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                          <tr><td >7</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                          <tr><td >8</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                        </table>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                  <div class="col-xs-6">
+                      <div class="box box-primary">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">原创榜</h3>
+                        </div>
+                        <div class="box-body">
+                          <table id="originalList" class="table table-condensed">
+                            <tr>
+                              <th>&nbsp;&nbsp;&nbsp;</th>
+                              <th>歌名</th>
+                              <th>歌手</th>
+                              <th>歌曲类型</th>
+                            </tr>
+                            <tr><td style="color: red;">1<i class="glyphicon glyphicon-arrow-up"></i></td><td><img class="rankImg" src="http://p4.music.126.net/yZli971pz305VVWf1G0jqQ==/109951165956509643.jpg?param=50y50&quality=100">环绕<i class='player_icon fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td style="color: red">2</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td style="color: red">3</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td >4</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td >5</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td >6</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td >7</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                            <tr><td >8</td><td>环绕<i class='fa fa-fw fa-play' onclick='playThisMusic("+musics[i].id+")'></i></td><td>陈奕迅</td><td>流行</td></tr>
+                          </table>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+              </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+          <div class="box">
+            <div class="mainbox_heard oktop">
+              <a href="#">歌单热门推荐</a>
+              <a href="list.html" class="mainbox_more">更多</a>
+              <div class="ceng2">
+                <i class="glyphicon glyphicon-fire"></i>
+              </div>
+            </div>
+            <ul class="mainbox_itmelist" id="hotSongListUl">
+              <li>
+                <a href="#" class="mainbox_itmea1">
+                  <img src="http://p2.music.126.net/pbmhG8H-vuJO9lpEoSIIpQ==/109951165921680352.jpg?param=140y140" alt="">
+                </a>
+                <div class="ceng">
+                  <span><i class="glyphicon glyphicon-headphones"></i></span>
+                  <span>2021-04-26</span>
+                  <a href="#"><i class="glyphicon glyphicon-music"></i></a>
+                </div>
+                <a href="#" class="mainbox_itmea2">
+                  地下8英里全国总决赛2020
+                </a>
+              </li>
+
+            </ul>
+            <!-- /.box-body -->
+          </div>
+
+
+
+          <div class="box">
+            <div class="mainbox_heard oktop">
+              <a href="#">新歌上架</a>
+              <a href="song.html" class="mainbox_more">更多</a>
+              <div class="ceng2">
+                <i class="glyphicon glyphicon-cd"></i>
+              </div>
+            </div>
+            <div class="newitme">
+              <div class="newitme_box">
+                <ul id="newSongUl">
+                  <li>
+                    <a href="#">
+                      <img src="./img/newimg.jpg" alt="">
+                    </a>
+                    <a href="#" class="newitme_boxa1">AZORAland·我是尤长靖</a>
+                    <p class="newitme_boxp2">尤长靖</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+        </div> 
+
+         <div class="col-md-3">
+            <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-fw fa-tags"></i>音乐分类</h3>
+            </div>
+            <div class="box-body" id="musicsCategory">
+              <button type="button" class="btn  btn-default btn-sm">流行</button>
+
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-fw  fa-users"></i>入驻歌手</h3>
+            </div>
+            <div class="box-body" id="singersDiv">
+
+              <button type="button" class="btn  btn-default btn-sm">梁静茹</button>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-fw fa-volume-up"></i>活动公告</h3>
+            </div>
+            <div class="box-body">
+              <table id="builletin" class="table table-condensed">
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+        </div> 
+      </div> 
+    </section>    
+    </div>
+    <!-- /.container -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0.0
+      </div>
+      <strong>Copyright &copy; 2017.</strong> All rights reserved.
+    </div>
+    <!-- /.container -->
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- 登录模态框 -->
+<div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="signinLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="signinLabel">登录</h4>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+                  <label>用户名</label>
+                  <input type="text" class="form-control" id="signin_username" placeholder="输入用户名">
+                  <label>密码</label>
+                  <input type="password" class="form-control" id="signin_password" placeholder="输入密码">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"  id="signin_button">登录</button>
+        <a href="admin/login.html" class="btn btn-link" style="font-size: 1px;float: left">管理员入口</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 注册模态框 -->
+<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="signupLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="signupLabel">注册</h4>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+                 <label for=>用户名</label>
+                  <input type="text" class="form-control" id="signup_username" placeholder="输入用户名(必填)">
+                  <label>密码</label>
+                  <input type="password" class="form-control" id="signup_password" placeholder="输入密码(必填)">
+                  <label>确认密码</label>
+                  <input type="password" class="form-control" id="signup_password2" placeholder="再次输入密码(必填)">
+                  <label>性别</label><br/>
+                  <input type="radio"  name="sex" id="signup_sex" value="男">男
+                  <input type="radio" name="sex" id="signup_sex2" value="女">女<br/>
+                  <label>电话</label>
+                  <input type="tel" class="form-control" id="signup_tel" placeholder="输入电话">
+                  <label>邮箱</label>
+                  <input type="email" class="form-control" id="signup_email" placeholder="输入邮箱">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button"  id="signup_button" class="btn btn-danger">注册</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

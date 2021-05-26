@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>错误页码 | Music Sky</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <!--下面这几个是比较重要的css的引入包
+      下面的这些也很重要
+    -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+
+  <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+  <script src="plugins/fastclick/fastclick.js"></script>
+  <script src="dist/js/app.min.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/base.js"></script>
+  <script src="js/user.js"></script>
+  <script src="layer/layer.js"></script>
+  <script>
+    $(function () {
+      $("#back_button").click(function () {
+        window.history.back();
+      });
+    });
+  </script>
+</head>
+<!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+<body class="hold-transition skin-red layout-top-nav">
+<div class="wrapper">
+
+  <header class="main-header">
+    <nav class="navbar navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><b>Music</b>Sky</a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <i class="fa fa-bars"></i>
+          </button>
+
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </header>
+  <!-- Full Width Column -->
+  <div class="content-wrapper">
+    <div class="container">
+    <section class="content">
+
+      <div class="row">
+        <div class="col-md-9">
+          <div class="box-body no-padding">
+            <h2 class="form-signin-heading" style="margin: 50px auto 0px auto">
+              <i class="glyphicon glyphicon-log-in"></i>
+              错误消息:
+            </h2>
+            <h3 id="error_message">发生了错误！请返回</h3>
+            <button id="back_button" style="width: 150px;margin: 50px auto 0px auto" class="btn btn-lg btn-success btn-block">点我回去</button>
+          </div>
+          <!-- /.box -->
+        </div> 
+
+      </div> 
+    </section>    
+    </div>
+    <!-- /.container -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0.0
+      </div>
+      <strong>Copyright &copy; 2017.</strong> All rights reserved.
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

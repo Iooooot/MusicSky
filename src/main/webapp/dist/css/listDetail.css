@@ -1,0 +1,446 @@
+.main {
+    width: 100%;
+    float: left;
+    margin-right: -250px;
+    box-sizing: border-box;
+}
+
+.main-wrap {
+    margin-right: 50px;
+}
+
+.content-box {
+    padding: 20px 30px 30px;
+}
+.article .title {
+    border-left: 3px solid #B72712;
+    padding-left: 14px;
+    margin: 10px 0 20px;
+}
+
+.article .title h2 {
+    color: #333;
+    font-size: 22px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.article .title .info {
+    font-size: 12px;
+    color: #888;
+}
+
+.article .content p {
+    font-size: 14px;
+    line-height: 26px;
+    margin: 0 0 14px;
+    word-break: break-all;
+    color: rgb(102, 102, 102);
+}
+
+
+.mainbox_heard {
+    width: 100%;
+    height: 35px;
+    border-bottom: 2px solid #C10D0C;
+    position: relative;
+}
+
+.mainbox_heard>a {
+    display: inline-block;
+    height: 35px;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 35px;
+    text-decoration: none;
+    color: #333;
+    padding-left: 30px;
+    box-sizing: border-box;
+}
+
+.ceng2 {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    top: 5px;
+}
+
+.ceng2_div1 {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    background-color: #C10D0C;
+    border-radius: 50%;
+}
+
+.ceng2_div2 {
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    left: 10.5px;
+    top: 11px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+.new-artist-songs{
+    margin-left: -35px;
+}
+.artist-song:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-top: 1px solid #f2f2f2;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.artist-song:first-child:before {
+    border-top: none;
+}
+
+.artist-song {
+    position: relative;
+    padding: 14px 0px;
+    list-style: none;
+    color: #737373;
+    overflow: hidden;
+}
+
+.artist-song:hover {
+    box-shadow: 0 0 38px rgba(0, 0, 0, .08) inset;
+    -webkit-transition: all .15s ease;
+    transition: all .15s ease;
+}
+
+.artist-song h3 {
+    color: #737373;
+}
+
+.artist-song .cover-link {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 4;
+}
+
+.artist-song .avatar {
+    float: left;
+    width: 48px;
+    height: 48px;
+}
+
+.artist-song .avatar img {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    overflow: hidden;
+    line-height: 48px;
+    text-align: center;
+}
+
+.artist-song .info {
+    margin-left: 62px;
+}
+
+.artist-song .info h3 {
+    display: block;
+    margin: 0;
+    line-height: 28px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #424242;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.artist-song .info p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 20px;
+    color: #B2B2B2;
+}
+
+
+
+.content{
+    width: 100%;
+    height: 335px;
+}
+.content .content_in{
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+.content .content_left{
+    width: 800px;
+    height: 100%;
+    float: left;
+}
+.content_left .tool_nav{
+    width: 100%;
+    height: 40px;
+
+}
+
+.content .tool_list{
+    width: 100%;
+    height: 500px;
+    overflow: auto;
+}
+.tool_list ul{
+list-style: none;
+}
+.tool_list ul li{
+    width: 100%;
+    height: 50px;
+    color: #333333;
+    line-height: 50px;
+    text-align: center;
+    border-bottom: 1px dashed black;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.tool_list .list_head{
+    width: 100%;
+    height: 50px;
+    color: black;
+    line-height: 50px;
+    text-align: center;
+
+}
+.tool_list div{
+    float: left;
+}
+.list_number{
+    width: 20px;
+    height: 50px;
+}
+.list_number2{
+    background: url("../../images/wave.gif") no-repeat center center;
+    color: transparent;
+}
+.list_name{
+    width: 330px;
+    height: 50px;
+    margin-right: -65px;
+    position: relative;
+}
+.list_name span{
+    float: left;
+    margin-left: 20px;
+}
+.name_meau{
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    right: 10px;
+    margin-top: 8px;
+    display: none;
+}
+.name_meau a{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    opacity: .8;
+}
+.name_meau a:hover{
+    opacity: 1;
+}
+.name_meau a:nth-child(1){
+    background: url("../../images/bofang2.svg") no-repeat 0 0;
+    background-size: 100%;
+}
+.name_meau a:nth-child(2){
+    background: url("../../images/tianjia.svg") no-repeat 0 0;
+    background-size: 100%;
+}
+.name_meau a:nth-child(3){
+    background: url("../../images/xiazai.svg") no-repeat 0 0;
+    background-size: 100%;
+}
+.name_meau_play2{
+    width: 32px !important;
+    height: 32px !important;
+    background: url("../../images/zanting2.svg") no-repeat 0 0 !important;
+    background-size: 100% !important;
+}
+.list_singer{
+    width: 160px;
+    height: 50px;
+    position: relative;
+}
+
+.list_timer{
+    width: 130px;
+    height: 50px;
+}
+
+
+
+
+
+
+.footer{
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.footer .footer_in{
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    user-select: none;
+    padding-top: 10px;
+}
+.footer_in a{
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    margin-left: 15px;
+}
+.music_progress{
+    display: inline-block;
+    margin-left: 40px;
+    width: 611px;
+    height: 45px;
+    /* vertical-align: 10px; */
+}
+.music_top{
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+    color: black;
+}
+.music_name{
+    float: left;
+    opacity: 1;
+}
+
+.music_progress_music{
+    float: right;
+    margin-right: 17px;
+}
+.music_progress_line{
+    width: 100%;
+    height: 2px;
+    background: #C1C1C1;
+    position: relative;
+    margin-top: 8px;
+    cursor: pointer;
+}
+.music_progress_load{
+    width: 0px;
+    height: 100%;
+    position: absolute;
+    background: black;
+}
+.music_progress_play{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: black;
+    position: absolute;
+    left: 0px;
+    top: -4px;
+}
+.music_pre{
+    width: 40px;
+    height: 40px;
+    background: url("../../images/pre.svg") no-repeat 0 0 ;
+    background-size: 100%;
+}
+.music_play{
+    width: 50px;
+    height: 50px;
+    background: url("../../images/bofang2.svg") no-repeat 0 0 ;
+    background-size: 100%;
+    vertical-align: -5px;
+}
+.music_play2{
+    width: 50px;
+    height: 50px;
+    background: url("../../images/zanting2.svg") no-repeat 0 0 ;
+    background-size: 100%;
+    vertical-align: -5px;
+}
+.music_next{
+    width: 40px;
+    height: 40px;
+    background: url("../../images/netx2.svg") no-repeat 0 0 ;
+    background-size: 100%;
+}
+
+.music_love{
+    width: 25px;
+    height: 25px;
+    background: url("../../images/love2.svg") no-repeat 0 0 ;
+    background-size: 100%;
+}
+.music_xiazai{
+    width: 25px;
+    height: 25px;
+    background: url("../../images/xiazai.svg") no-repeat 0 0 ;
+    background-size: 100%;
+}
+
+.voice{
+    display: inline-block;
+    width: 120px;
+    height: 45px;
+    position: relative;
+    margin-left: 25px;
+    top: 13px;
+}
+.voice_big{
+    width: 25px;
+    height: 25px;
+    background: url("../../images/yingliang.svg") no-repeat 0 0;
+    background-size: 100%;
+    position: absolute;
+    left: -15px;
+    top: 10px;
+}
+.voice_big2{
+    background: url("../../images/jingyin.svg") no-repeat 0 0;
+    background-size: 100%;
+}
+.voice_line{
+    display: inline-block;
+    height: 2px;
+    width: 80px;
+    background: #C1C1C1;
+    position: absolute;
+    left: 35px;
+    top: 22px;
+    cursor: pointer;
+}
+.voice_load{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+}
+.voice_play{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: black;
+    position: absolute;
+    left: 100%;
+    top: -4px;
+}
